@@ -6,5 +6,5 @@ package com.iFox.JdbcDAO;
  * 根据实际名字更改
  *
  */
-public class BaseDAO {
+public class BaseDAO<T> {
 }
