@@ -15,7 +15,7 @@
     <context:annotation-config/>
 
     <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
-        <property name="user" value="${jdbc.user}"/>
+        <property name="user" value="${jdbc.parkUser}"/>
         <property name="driverClass" value="${jdbc.driver}"/>
         <property name="password" value="${jdbc.password}"/>
         <property name="jdbcUrl" value="${jdbc.url}"/>
