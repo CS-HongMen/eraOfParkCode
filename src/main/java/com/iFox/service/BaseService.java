@@ -6,6 +6,6 @@ package com.iFox.service;
  * <p>
  * 根据实际名字更改
  */
-public class BaseService {
+public interface BaseService {
 
 }

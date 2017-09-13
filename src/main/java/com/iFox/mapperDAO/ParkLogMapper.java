@@ -9,4 +9,6 @@ import com.iFox.entity.ParkLog;
 public interface ParkLogMapper {
 
     void saveLog(ParkLog parkLog);
+
+    ParkLog getParkLogAndUser();
 }

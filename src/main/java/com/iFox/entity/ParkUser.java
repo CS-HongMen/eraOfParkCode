@@ -134,7 +134,7 @@ public class ParkUser implements Serializable {
     public ParkUser() {
     }
 
-    public ParkUser(Integer id, String userName, String email, String password, String school, String imgPath, String individualResume, List<ParkLog> logs) {
+    public ParkUser(Integer id, String userName, String email, String password, String school, String imgPath, String individualResume) {
         this.id = id;
         this.userName = userName;
         this.email = email;
@@ -142,6 +142,5 @@ public class ParkUser implements Serializable {
         this.school = school;
         this.imgPath = imgPath;
         this.individualResume = individualResume;
-        this.logs = logs;
     }
 }

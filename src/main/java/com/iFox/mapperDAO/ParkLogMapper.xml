@@ -11,13 +11,16 @@
         <result column="log_information" property="logInformation"/>
         <result column="log_date" property="logDate"/>
         <result column="ImgPath" property="imgPath"/>
+        <result column="userId" property="userId"/>
         <result column="surname_count" property="surnameCount"/>
+        <association property="parkUser"
+        select="com.iFox.mapperDAO.ParkUserMapper"
+        column="userId">
+        </association>
 
     </resultMap>
 
     <!--void saveLog(ParkLog parkLog);-->
-
-
     <insert id="saveLog">
         INSERT into tbl_log(id,log_information,log_date,ImgPath,userId,surname_count)
         VALUES (
@@ -29,6 +32,12 @@
         #{parkLog.surname_count}
         )
     </insert>
+
+
+    <!--ParkLog getParkLogAndUser();-->
+    <select id="getParkLogAndUser" resultMap="logResult">
+        SELECT id,log_information,log_date,ImgPath,userId,surname_count FROM tbl_log
+    </select>
 
 
 

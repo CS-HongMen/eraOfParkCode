@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.iFox.mapperDAO.ParkLogMapper">
+    <cache eviction="FIFO" readOnly="false" flushInterval="60000" size="1024" />
+
+    <!--    ParkUser getParkUser(Integer id);-->
+    <resultMap id="userResult" type="com.iFox.entity.ParkUser">
+        <id column="id" property="id"/>
+        <result column="user_name" property="userName"/>
+        <result column="email" property="email"/>
+        <result column="password" property="password"/>
+        <result column="school" property="school"/>
+        <result column="img_path" property="imgPath"/>
+        <result column="individual_resume" property="individualResume"/>
+
+    </resultMap>
+
+    <select id="getParkUser" resultMap="userResult">
+      SELECT id ,user_name,email,password,school,img_path,individual_resume FROM tbl_user WHERE id = #{id}
+    </select>
+
+
+</mapper>
