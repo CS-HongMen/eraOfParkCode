@@ -1,31 +1,25 @@
 package com.iFox.entity;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by exphuhong on 17-9-13.
  * Start
  */
-public class ParkUser {
+public class ParkUser implements Serializable {
+    private static final long serialVersionUID = -4188697887466612154L;
     private Integer id;
     private String userName;
     private String email;
     private String password;
     private String school;
     private String imgPath;
-    private String indicidualResume;
+    private String individualResume;
 
+    private List<ParkLog> logs = new ArrayList<>();
 
-    @Override
-    public String toString() {
-        return "ParkUser{" +
-                "id=" + id +
-                ", userName='" + userName + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", school='" + school + '\'' +
-                ", imgPath='" + imgPath + '\'' +
-                ", indicidualResume='" + indicidualResume + '\'' +
-                '}';
-    }
 
     @Override
     public boolean equals(Object o) {
@@ -40,7 +34,9 @@ public class ParkUser {
         if (password != null ? !password.equals(parkUser.password) : parkUser.password != null) return false;
         if (school != null ? !school.equals(parkUser.school) : parkUser.school != null) return false;
         if (imgPath != null ? !imgPath.equals(parkUser.imgPath) : parkUser.imgPath != null) return false;
-        return indicidualResume != null ? indicidualResume.equals(parkUser.indicidualResume) : parkUser.indicidualResume == null;
+        if (individualResume != null ? !individualResume.equals(parkUser.individualResume) : parkUser.individualResume != null)
+            return false;
+        return logs != null ? logs.equals(parkUser.logs) : parkUser.logs == null;
 
     }
 
@@ -52,11 +48,23 @@ public class ParkUser {
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (school != null ? school.hashCode() : 0);
         result = 31 * result + (imgPath != null ? imgPath.hashCode() : 0);
-        result = 31 * result + (indicidualResume != null ? indicidualResume.hashCode() : 0);
+        result = 31 * result + (individualResume != null ? individualResume.hashCode() : 0);
+        result = 31 * result + (logs != null ? logs.hashCode() : 0);
         return result;
     }
 
-    public ParkUser() {
+    @Override
+    public String toString() {
+        return "ParkUser{" +
+                "id=" + id +
+                ", userName='" + userName + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", school='" + school + '\'' +
+                ", imgPath='" + imgPath + '\'' +
+                ", individualResume='" + individualResume + '\'' +
+                ", logs=" + logs +
+                '}';
     }
 
     public Integer getId() {
@@ -107,21 +115,33 @@ public class ParkUser {
         this.imgPath = imgPath;
     }
 
-    public String getIndicidualResume() {
-        return indicidualResume;
+    public String getIndividualResume() {
+        return individualResume;
     }
 
-    public void setIndicidualResume(String indicidualResume) {
-        this.indicidualResume = indicidualResume;
+    public void setIndividualResume(String individualResume) {
+        this.individualResume = individualResume;
     }
 
-    public ParkUser(Integer id, String userName, String email, String password, String school, String imgPath, String indicidualResume) {
+    public List<ParkLog> getLogs() {
+        return logs;
+    }
+
+    public void setLogs(List<ParkLog> logs) {
+        this.logs = logs;
+    }
+
+    public ParkUser() {
+    }
+
+    public ParkUser(Integer id, String userName, String email, String password, String school, String imgPath, String individualResume, List<ParkLog> logs) {
         this.id = id;
         this.userName = userName;
         this.email = email;
         this.password = password;
         this.school = school;
         this.imgPath = imgPath;
-        this.indicidualResume = indicidualResume;
+        this.individualResume = individualResume;
+        this.logs = logs;
     }
 }

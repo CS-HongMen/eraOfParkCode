@@ -6,5 +6,30 @@
 <mapper namespace="com.iFox.mapperDAO.ParkLogMapper">
     <cache eviction="FIFO" readOnly="false" flushInterval="60000" size="1024" />
 
+    <resultMap id="logResult" type="com.iFox.entity.ParkLog">
+        <id column="id" property="id"/>
+        <result column="log_information" property="logInformation"/>
+        <result column="log_date" property="logDate"/>
+        <result column="ImgPath" property="imgPath"/>
+        <result column="surname_count" property="surnameCount"/>
+
+    </resultMap>
+
+    <!--void saveLog(ParkLog parkLog);-->
+
+
+    <insert id="saveLog">
+        INSERT into tbl_log(id,log_information,log_date,ImgPath,userId,surname_count)
+        VALUES (
+        NULL,
+        #{parkLog.logInformation},
+        #{parkLog.logDate},
+        #{parkLog.ImgPath},
+        #{parkLog.userId},
+        #{parkLog.surname_count}
+        )
+    </insert>
+
+
 
 </mapper>

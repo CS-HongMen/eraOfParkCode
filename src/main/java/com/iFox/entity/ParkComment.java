@@ -1,17 +1,31 @@
 package com.iFox.entity;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
  * Created by exphuhong on 17-9-13.
  * Start
  */
-public class ParkComment {
+public class ParkComment implements Serializable{
 
+    private static final long serialVersionUID = -6855907475041180843L;
     private Integer id;
     private String comInformation;
     private LocalDate comDate;
     private Integer logId;
+    private ParkLog parkLog;
+
+    public ParkComment() {
+    }
+
+    public ParkComment(Integer id, String comInformation, LocalDate comDate, Integer logId, ParkLog parkLog) {
+        this.id = id;
+        this.comInformation = comInformation;
+        this.comDate = comDate;
+        this.logId = logId;
+        this.parkLog = parkLog;
+    }
 
 
     @Override
@@ -25,8 +39,10 @@ public class ParkComment {
         if (comInformation != null ? !comInformation.equals(that.comInformation) : that.comInformation != null)
             return false;
         if (comDate != null ? !comDate.equals(that.comDate) : that.comDate != null) return false;
-        return logId != null ? logId.equals(that.logId) : that.logId == null;
+        if (logId != null ? !logId.equals(that.logId) : that.logId != null) return false;
+        if (parkLog != null ? !parkLog.equals(that.parkLog) : that.parkLog != null) return false;
 
+        return true;
     }
 
     @Override
@@ -35,6 +51,7 @@ public class ParkComment {
         result = 31 * result + (comInformation != null ? comInformation.hashCode() : 0);
         result = 31 * result + (comDate != null ? comDate.hashCode() : 0);
         result = 31 * result + (logId != null ? logId.hashCode() : 0);
+        result = 31 * result + (parkLog != null ? parkLog.hashCode() : 0);
         return result;
     }
 
@@ -45,6 +62,7 @@ public class ParkComment {
                 ", comInformation='" + comInformation + '\'' +
                 ", comDate=" + comDate +
                 ", logId=" + logId +
+                ", parkLog=" + parkLog +
                 '}';
     }
 
@@ -80,13 +98,11 @@ public class ParkComment {
         this.logId = logId;
     }
 
-    public ParkComment() {
+    public ParkLog getParkLog() {
+        return parkLog;
     }
 
-    public ParkComment(Integer id, String comInformation, LocalDate comDate, Integer logId) {
-        this.id = id;
-        this.comInformation = comInformation;
-        this.comDate = comDate;
-        this.logId = logId;
+    public void setParkLog(ParkLog parkLog) {
+        this.parkLog = parkLog;
     }
 }

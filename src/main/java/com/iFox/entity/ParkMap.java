@@ -1,10 +1,13 @@
 package com.iFox.entity;
 
+import java.io.Serializable;
+
 /**
  * Created by exphuhong on 17-9-13.
  * Start
  */
-public class ParkMap {
+public class ParkMap implements Serializable{
+    private static final long serialVersionUID = 4906709623797027148L;
     private Integer id;
     private float mapLongitude; //经度
     private float mapLatitude;//纬度

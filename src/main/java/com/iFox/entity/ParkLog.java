@@ -2,29 +2,41 @@ package com.iFox.entity;
 
 import org.apache.ibatis.type.Alias;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by exphuhong on 17-9-13.
  * Start
  */
 @Alias("parkLog")
-public class ParkLog {
+public class ParkLog implements Serializable{
 
-    private final Integer id;
-    private final String logInformation;
-    private final LocalDateTime logDate;
+    private static final long serialVersionUID = -5188174034475774679L;
+    private Integer id;
+    private String logInformation;
+    private LocalDateTime logDate;
     private String imgPath;
-    private final Integer userId;
-    private final Integer surnameCount;
+    private Integer userId;
+    private Integer surnameCount;
+    private ParkUser parkUser;
+    private List<ParkComment> parkComments = new ArrayList<>();
 
-    public ParkLog(Integer id, String logInformation, LocalDateTime logDate, String imgPath, Integer userId, Integer surnameCount) {
+
+    public ParkLog() {
+    }
+
+    public ParkLog(Integer id, String logInformation, LocalDateTime logDate, String imgPath, Integer userId, Integer surnameCount, ParkUser parkUser, List<ParkComment> parkComments) {
         this.id = id;
         this.logInformation = logInformation;
         this.logDate = logDate;
         this.imgPath = imgPath;
         this.userId = userId;
         this.surnameCount = surnameCount;
+        this.parkUser = parkUser;
+        this.parkComments = parkComments;
     }
 
     @Override
@@ -40,7 +52,10 @@ public class ParkLog {
         if (logDate != null ? !logDate.equals(parkLog.logDate) : parkLog.logDate != null) return false;
         if (imgPath != null ? !imgPath.equals(parkLog.imgPath) : parkLog.imgPath != null) return false;
         if (userId != null ? !userId.equals(parkLog.userId) : parkLog.userId != null) return false;
-        return surnameCount != null ? surnameCount.equals(parkLog.surnameCount) : parkLog.surnameCount == null;
+        if (surnameCount != null ? !surnameCount.equals(parkLog.surnameCount) : parkLog.surnameCount != null)
+            return false;
+        if (parkUser != null ? !parkUser.equals(parkLog.parkUser) : parkLog.parkUser != null) return false;
+        return parkComments != null ? parkComments.equals(parkLog.parkComments) : parkLog.parkComments == null;
 
     }
 
@@ -52,6 +67,8 @@ public class ParkLog {
         result = 31 * result + (imgPath != null ? imgPath.hashCode() : 0);
         result = 31 * result + (userId != null ? userId.hashCode() : 0);
         result = 31 * result + (surnameCount != null ? surnameCount.hashCode() : 0);
+        result = 31 * result + (parkUser != null ? parkUser.hashCode() : 0);
+        result = 31 * result + (parkComments != null ? parkComments.hashCode() : 0);
         return result;
     }
 
@@ -64,34 +81,72 @@ public class ParkLog {
                 ", imgPath='" + imgPath + '\'' +
                 ", userId=" + userId +
                 ", surnameCount=" + surnameCount +
+                ", parkUser=" + parkUser +
+                ", parkComments=" + parkComments +
                 '}';
-    }
-
-    public void setImgPath(String imgPath) {
-        this.imgPath = imgPath;
     }
 
     public Integer getId() {
         return id;
     }
 
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     public String getLogInformation() {
         return logInformation;
+    }
+
+    public void setLogInformation(String logInformation) {
+        this.logInformation = logInformation;
     }
 
     public LocalDateTime getLogDate() {
         return logDate;
     }
 
+    public void setLogDate(LocalDateTime logDate) {
+        this.logDate = logDate;
+    }
+
     public String getImgPath() {
         return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 
     public Integer getUserId() {
         return userId;
     }
 
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     public Integer getSurnameCount() {
         return surnameCount;
+    }
+
+    public void setSurnameCount(Integer surnameCount) {
+        this.surnameCount = surnameCount;
+    }
+
+    public ParkUser getParkUser() {
+        return parkUser;
+    }
+
+    public void setParkUser(ParkUser parkUser) {
+        this.parkUser = parkUser;
+    }
+
+    public List<ParkComment> getParkComments() {
+        return parkComments;
+    }
+
+    public void setParkComments(List<ParkComment> parkComments) {
+        this.parkComments = parkComments;
     }
 }
