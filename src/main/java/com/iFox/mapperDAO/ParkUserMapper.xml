@@ -18,7 +18,7 @@
 
     </resultMap>
 
-    <select id="getParkUser" resultMap="userResult">
+    <select id="getUserByPage" resultMap="userResult">
       SELECT id ,user_name,email,password,school,img_path,individual_resume FROM tbl_user WHERE id = #{id}
     </select>
 

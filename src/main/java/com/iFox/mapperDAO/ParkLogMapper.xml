@@ -35,7 +35,7 @@
 
 
     <!--ParkLog getParkLogAndUser();-->
-    <select id="getParkLogAndUser" resultMap="logResult">
+    <select id="getLogByPage" resultMap="logResult">
         SELECT id,log_information,log_date,ImgPath,userId,surname_count FROM tbl_log
     </select>
 
