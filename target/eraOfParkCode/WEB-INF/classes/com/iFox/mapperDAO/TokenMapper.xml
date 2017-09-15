@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.iFox.mapperDAO.TokenMapper">
+
+<!--void save(TokenModel tokenModel);-->
+    <insert id="save" parameterType="com.iFox.utils.TokenModel">
+        INSERT INTO tbl_token(startTime,email,uuid,TIME)
+        VALUES (#{startTime},#{email},#{uuid},#{time})
+    </insert>
+
+    <!--void delete(String email);-->
+    <delete id="delete">
+        DELETE FROM tbl_token WHERE email = #{email}
+    </delete>
+
+    <!--TokenModel getToken(String email);-->
+    <select id="getToken" resultType="com.iFox.utils.TokenModel">
+      SELECT startTime,email,uuid,time
+      FROM tbl_token
+      WHERE email = #{email}
+    </select>
+
+</mapper>
