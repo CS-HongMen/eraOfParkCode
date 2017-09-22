@@ -39,4 +39,5 @@
         <property name="basePackage" value="com.iFox.mapperDAO"/>
     </bean>
 
+    <bean class="com.iFox.service.serciceImpl.InformationServiceImpl" id="informationService"></bean>
 </beans>

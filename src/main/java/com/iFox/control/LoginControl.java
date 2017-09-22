@@ -1,6 +1,7 @@
 package com.iFox.control;
 
 import com.google.gson.Gson;
+import com.iFox.entity.ParkUser;
 import com.iFox.service.LoginService;
 import com.iFox.utils.TokenModel;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,7 +33,8 @@ public class LoginControl {
     @ResponseBody
     String login(String email, String password) {
         Gson gson = new Gson();
-        if (loginService.getUser(email, password) != null) {
+        ParkUser parkUser = loginService.getUser(email, password);
+        if (parkUser != null) {
             TokenModel tokenModel = loginService.getToken(email);
             if (tokenModel != null) {
                 tokenModelList.forEach(tokenModel1 -> {
@@ -40,14 +42,14 @@ public class LoginControl {
                         tokenModel.setTime(EXP_DATE);
                     }
                 });
-                return gson.toJson(tokenModel);
+                return gson.toJson(tokenModel) + "&" + gson.toJson(parkUser);
             } else {
                 LocalDateTime localDateTime = LocalDateTime.now();
                 TokenModel newTokenModel = new TokenModel(localDateTime.toString(), email, String.valueOf(UUID.randomUUID()), EXP_DATE);
                 loginService.save(newTokenModel);
 
                 tokenModelList.add(newTokenModel);
-                return gson.toJson(newTokenModel);
+                return gson.toJson(newTokenModel) + "&" + gson.toJson(parkUser);
             }
 
         }

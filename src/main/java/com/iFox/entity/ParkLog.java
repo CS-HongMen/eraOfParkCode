@@ -28,11 +28,9 @@ public class ParkLog implements Serializable{
     public ParkLog() {
     }
 
-    public ParkLog(Integer id, String logInformation, Date logDate, String imgPath, Integer userId, Integer surnameCount) {
-        this.id = id;
+    public ParkLog(String logInformation, Date logDate, Integer userId, Integer surnameCount) {
         this.logInformation = logInformation;
         this.logDate = logDate;
-        this.imgPath = imgPath;
         this.userId = userId;
         this.surnameCount = surnameCount;
     }

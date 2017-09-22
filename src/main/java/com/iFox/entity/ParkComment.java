@@ -7,7 +7,7 @@ import java.time.LocalDate;
  * Created by exphuhong on 17-9-13.
  * Start
  */
-public class ParkComment implements Serializable{
+public class ParkComment implements Serializable {
 
     private static final long serialVersionUID = -6855907475041180843L;
     private Integer id;

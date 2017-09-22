@@ -11,6 +11,14 @@
     <title>Title</title>
 </head>
 <body>
-
+    <form action="/comUpLog" method="post" enctype="multipart/form-data" >
+        <input type="text" name="logInformation">
+        <input type="text" name="logDate">
+        <input type="text" name="userId">
+        <input type="text" name="surnameCount">
+        <input type="file" value="">
+        <input type="file" value="">
+        <input type="submit" value="submit">
+    </form>
 </body>
 </html>

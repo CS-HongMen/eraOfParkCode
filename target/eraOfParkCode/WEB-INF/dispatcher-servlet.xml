@@ -15,13 +15,13 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <mvc:interceptors>
+   <!-- <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/*"/>
             <mvc:exclude-mapping path="/login"/>
             <bean class="com.iFox.filter.LoginInterceptor"/>
         </mvc:interceptor>
-    </mvc:interceptors>
+    </mvc:interceptors>-->
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
 </beans>

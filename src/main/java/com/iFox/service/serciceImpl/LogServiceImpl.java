@@ -20,8 +20,13 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public List<ParkLog> getLogByPage(int pageNo, int pageSize) {
-        List<ParkLog> logList = parkLogMapper.getLogByPage(pageNo,pageSize);
+        List<ParkLog> logList = parkLogMapper.getLogByPage(pageNo, pageSize);
 
         return logList;
+    }
+
+    @Override
+    public void save(ParkLog parkLog) {
+        parkLogMapper.saveLog(parkLog);
     }
 }

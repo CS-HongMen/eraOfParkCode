@@ -22,14 +22,14 @@
 
     <!--void saveLog(ParkLog parkLog);-->
     <insert id="saveLog">
-        INSERT into tbl_log(id,log_information,log_date,ImgPath,email,surname_count)
+        INSERT into tbl_log(id,log_information,log_date,ImgPath,userId,surname_count)
         VALUES (
         NULL,
-        #{parkLog.logInformation},
-        #{parkLog.logDate},
-        #{parkLog.ImgPath},
-        #{parkLog.email},
-        #{parkLog.surname_count}
+        #{logInformation},
+        #{logDate},
+        #{imgPath},
+        #{userId},
+        #{surnameCount}
         )
     </insert>
 

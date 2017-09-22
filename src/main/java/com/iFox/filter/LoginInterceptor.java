@@ -14,18 +14,20 @@ import java.io.PrintWriter;
  * Created by exphuhong on 17-9-13.
  * Start
  */
-public class LoginInterceptor extends HandlerInterceptorAdapter{
+public class LoginInterceptor extends HandlerInterceptorAdapter {
+
     @Autowired
     private LoginService loginService;
+
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         String token = request.getParameter("token");
 
         Gson gson = new Gson();
-        TokenModel tokenModel = gson.fromJson(token,TokenModel.class);
+        TokenModel tokenModel = gson.fromJson(token, TokenModel.class);
 
         TokenModel tokenModelCheck = loginService.getToken(tokenModel.getEmail());
-        if (tokenModelCheck != null) {
+        if (tokenModelCheck == tokenModel && tokenModelCheck.equals(tokenModel)) {
             response.setContentType("text/plain; charset=utf-8");
             PrintWriter printWriter = response.getWriter();
             printWriter.print("200");

@@ -10,4 +10,6 @@ import java.util.List;
  */
 public interface LogService {
     List<ParkLog> getLogByPage(int pageNo, int pageSize);
+
+    void save(ParkLog parkLog);
 }

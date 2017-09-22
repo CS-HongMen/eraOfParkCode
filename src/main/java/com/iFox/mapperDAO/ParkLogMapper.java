@@ -13,4 +13,5 @@ public interface ParkLogMapper {
     void saveLog(ParkLog parkLog);
 
     List<ParkLog> getLogByPage(int pageNo, int pageSize);
+
 }

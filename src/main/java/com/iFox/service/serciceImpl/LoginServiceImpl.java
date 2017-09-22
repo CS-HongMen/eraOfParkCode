@@ -7,6 +7,7 @@ import com.iFox.service.LoginService;
 import com.iFox.utils.TokenModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * Created by exphuhong on 17-9-13.
@@ -21,6 +22,7 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private TokenMapper tokenMapper;
     @Override
+    @Transactional
     public void save(TokenModel tokenModel) {
         tokenMapper.save(tokenModel);
     }
@@ -31,6 +33,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
+    @Transactional
     public void delete(String email) {
         tokenMapper.delete(email);
     }
